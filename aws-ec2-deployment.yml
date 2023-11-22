@@ -18,7 +18,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
+          aws-region: eu-west-1
 
       # - name: Decode SSH Private Key
       #   run: |
@@ -31,9 +31,9 @@ jobs:
           ssh -i ${{ secrets.PRIVATE_SSH_KEY }} ubuntu@${{secrets.SERVER_PUBLIC_IP}}
           cd Test
           git pull
-          sudo docker build -t api-test-rb:latest .
+          sudo docker build -t api-test-ku:latest .
           # Run Docker commands on the EC2 instance
-          sudo docker stop api-test-rb || true
-          sudo docker rm api-test-rb || true
-          sudo docker run -d --name api-test-rb -p 80:80 api-test-rb:latest
+          sudo docker stop api-test-ku || true
+          sudo docker rm api-test-ku || true
+          sudo docker run -d --name api-test-ku -p 80:80 api-test-ku:latest
           sudo docker system prune -a
