@@ -36,4 +36,4 @@ jobs:
           sudo docker stop api-test-ku || true
           sudo docker rm api-test-ku || true
           sudo docker run -d --name api-test-ku -p 80:80 api-test-ku:latest
-          sudo docker system prune -a
+          # sudo docker system prune -a
